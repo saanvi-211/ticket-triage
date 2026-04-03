@@ -1,0 +1,115 @@
+/* TriageAI — Industrial/Terminal Aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap');
+
+:root {
+  --bg: #08080f;
+  --surface: #0f0f1a;
+  --surface-2: #16162a;
+  --surface-3: #1e1e35;
+  --border: rgba(99, 99, 200, 0.18);
+  --border-bright: rgba(99, 99, 200, 0.4);
+  --text: #e8e8f0;
+  --text-muted: #7070a0;
+  --text-dim: #404070;
+  --accent: #6c6cff;
+  --accent-bright: #8080ff;
+  --accent-glow: rgba(108, 108, 255, 0.25);
+  --green: #39d98a;
+  --green-dim: rgba(57, 217, 138, 0.15);
+  --yellow: #ffc233;
+  --yellow-dim: rgba(255, 194, 51, 0.15);
+  --red: #ff4f6a;
+  --red-dim: rgba(255, 79, 106, 0.15);
+  --orange: #ff8c42;
+  --orange-dim: rgba(255, 140, 66, 0.15);
+  --cyan: #33d4f5;
+  --cyan-dim: rgba(51, 212, 245, 0.12);
+  --security: #ff2d6e;
+  --security-dim: rgba(255, 45, 110, 0.15);
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --font-display: 'Syne', sans-serif;
+  --radius: 4px;
+  --radius-lg: 8px;
+  --transition: 0.15s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scanline overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+  50% { box-shadow: 0 0 0 6px transparent; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-in {
+  animation: fadeIn 0.3s ease both;
+}
