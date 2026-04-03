@@ -3,6 +3,8 @@
 
 A full-stack application that classifies and prioritizes support tickets using local NLP/heuristic logic — no external AI APIs.
 
+All project files are located inside the ticket-triage folder. Navigate into it before running any commands.
+
 ---
 
 ## Folder Structure
